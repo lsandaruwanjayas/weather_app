@@ -1,1 +1,1 @@
-/* 2. HTML & CSS Template */
+/* 3. AccuWeather API */
