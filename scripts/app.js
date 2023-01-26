@@ -1,5 +1,3 @@
-/* 10. Weather Icons & images */
-
 const cityForm = document.querySelector('form');
 const card = document.querySelector('.card');
 const details = document.querySelector('.details');
@@ -22,12 +20,7 @@ const updateUI = (data) => {
     const iconSrc = `img/icons/${Weather.WeatherIcon}.svg`;
     icon.setAttribute('src', iconSrc);
 
-    let timeSrc = null;
-    if(Weather.IsDayTime){
-        timeSrc = 'img/day.svg';
-    } else {
-        timeSrc = 'img/night.svg';
-    }
+    let timeSrc = Weather.IsDayTime ? 'img/day.svg' : 'img/night.svg';
     time.setAttribute('src', timeSrc);
 };
 
@@ -54,3 +47,4 @@ cityForm.addEventListener('submit', e => {
     .then( data => updateUI(data))
     .catch(err => console.log(err));
 });
+
