@@ -1,13 +1,14 @@
-/* 8. Updating the UI */
+/* 10. Weather Icons & images */
 
 const cityForm = document.querySelector('form');
 const card = document.querySelector('.card');
 const details = document.querySelector('.details');
+const time = document.querySelector('img.time');
+const icon = document.querySelector('.icon img');
 
-const updateUI = (data) => {
-
-    const cityDets = data.cityDets;
-    const Weather = data.Weather; 
+const updateUI = (data) => { 
+    
+    const { cityDets, Weather } = data;
 
     details.innerHTML = `
     <h5 class="my-3">${cityDets.EnglishName}</h5>
@@ -17,6 +18,17 @@ const updateUI = (data) => {
         <span>&deg;C</span>
     </div>
     `;
+
+    const iconSrc = `img/icons/${Weather.WeatherIcon}.svg`;
+    icon.setAttribute('src', iconSrc);
+
+    let timeSrc = null;
+    if(Weather.IsDayTime){
+        timeSrc = 'img/day.svg';
+    } else {
+        timeSrc = 'img/night.svg';
+    }
+    time.setAttribute('src', timeSrc);
 };
 
 if(card.classList.contains('d-none')){
